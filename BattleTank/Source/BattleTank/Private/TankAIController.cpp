@@ -25,6 +25,23 @@ void ATankAIController::BeginPlay()
 	
 }
 
+void ATankAIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if (GetPlayerTank())
+	{
+		// TODO Move towards the player
+
+		//aim towards the player
+		GetControlledTank()->Aimat(GetPlayerTank()->GetActorLocation());
+		//fire if ready
+	}
+	//start the tank moving the varrel so tha a show woult it where
+	//the crosshair intersects the world
+	//AimTowardsCrosshair();
+	//UE_LOG(LogTemp, Warning, TEXT("PlayerController ticking"));
+}
+
 ATank* ATankAIController::GetControlledTank() const
 {
 	return Cast<ATank>(GetPawn());
